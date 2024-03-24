@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 // TODO add your light theme colors palette
 class LightThemeColors {
+
+  //blue ocean
+  //##0A8ED9
+  static const Color blueOcean = Color(0xFF0A8ED9);
   // PRIMARY
   static const Color primaryColor = Color(0xFF42A7DE);
 

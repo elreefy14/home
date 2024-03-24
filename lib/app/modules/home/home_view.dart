@@ -46,11 +46,16 @@ class HomeView extends GetView<HomeController> {
                             fontFamily: 'Monadi',
                             color: controller.isSwitched.value ?  const Color(0xFF848484):Color(0xFF6EDD53),
                           ),
-                          Switch(
-                            value: controller.isSwitched.value,
-                            onChanged: (value) {
-                              controller.isSwitched.value = value;
-                            },
+                          Obx(
+                                () => Switch(
+                                  activeColor: const Color(0xFF6EDD53),
+                                  inactiveTrackColor: const Color(0xFF848484),
+                              value: controller.isSwitched.value,
+                              onChanged: (value) {
+                                controller.isSwitched.value = value;
+                                controller.update();
+                              },
+                            ),
                           ),
                           CustomText(
                             txt: 'بيع',
@@ -108,7 +113,7 @@ class HomeView extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 5.h,),
+                    SizedBox(height: 20.h,),
                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal: 20.w,),
                       child: Row(
@@ -219,12 +224,14 @@ class HomeView extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20.h,),
+                    SizedBox(height: 40.h,),
+                    //    width: 335,
+                    //           height: 304,
                     Stack(
                       children: [
                         Container(
                           width: 335.w,
-                          height: 200.h,
+                          height: 304.h,
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(20.r),
@@ -245,10 +252,10 @@ class HomeView extends GetView<HomeController> {
                               borderRadius: BorderRadius.circular(40.r),
                             ),
                             child: Center(
-                              child: SvgPicture.asset(
-                                'assets/images/Group.svg',
-                                width: 20,
-                                height: 20,
+                              child: Image.asset(
+                                'assets/vectors/c.png', // This is the camera PNG image
+                                width: 40, // Change this to your desired size
+                                height: 40, // Change this to your desired size
                               ),
                             ),
                           ),
@@ -281,6 +288,7 @@ class HomeView extends GetView<HomeController> {
                                 image: NetworkImage("https://via.placeholder.com/72x71"),
                                 fit: BoxFit.fill,
                               ),
+                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           //5
@@ -293,6 +301,7 @@ class HomeView extends GetView<HomeController> {
                                 image: NetworkImage("https://via.placeholder.com/72x71"),
                                 fit: BoxFit.fill,
                               ),
+                                    borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           // SizedBox(width: 10.w,),
@@ -304,6 +313,7 @@ class HomeView extends GetView<HomeController> {
                                 image: NetworkImage("https://via.placeholder.com/72x71"),
                                 fit: BoxFit.fill,
                               ),
+                                    borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           // SizedBox(width: 10.w,),
@@ -317,16 +327,20 @@ class HomeView extends GetView<HomeController> {
                                     image: NetworkImage("https://via.placeholder.com/72x71"),
                                     fit: BoxFit.fill,
                                   ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  '+5',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20.sp,
-                                    fontFamily: 'Raleway',
-                                    fontWeight: FontWeight.w500,
+                              Positioned.fill(
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    '+5',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20.sp,
+                                      fontFamily: 'Raleway',
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -376,11 +390,11 @@ class HomeView extends GetView<HomeController> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.w,),
                       child: Container(
-                        width: 341.w,
-                        height: 80.h,
+                        width: 340.w,
+                        height: 185.h,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage("https://via.placeholder.com/341x80"),
+                            image: NetworkImage("https://via.placeholder.com/340x185"),
                             fit: BoxFit.fill,
                           ),
                           borderRadius: BorderRadius.circular(23.r),

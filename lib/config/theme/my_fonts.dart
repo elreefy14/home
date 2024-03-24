@@ -10,6 +10,18 @@ class MyFonts {
   static TextStyle get getAppFontType =>
       LocalizationService.supportedLanguagesFontsFamilies[
           SharedPref.getCurrentLocal().languageCode]!;
+  static Text font15Weight400ColorWhite(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        fontFamily: 'Monadi',
+        fontWeight: FontWeight.w400,
+        height: 0,
+      ),
+    );
+  }
 
   // headlines text font
   static TextStyle get displayTextStyle => getAppFontType;
