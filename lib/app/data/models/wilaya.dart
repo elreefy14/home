@@ -1,25 +1,28 @@
-class HouseModel {
-  final String distance;
+class Wilaya {
+  final String id;
+  final String code;
   final String name;
-  final String location;
-  final double price;
-  final int numberOfRooms; // Add this
-  final int numberOfBathrooms; // Add this
-  final String description;
-  final String ownerName;
-  final String ownerNumber;
-  final List<String> images;
+  final String arName;
+  final String longitude;
+  final String latitude;
 
-  HouseModel({
-    required this.distance,
+  Wilaya({
+    required this.id,
+    required this.code,
     required this.name,
-    required this.location,
-    required this.price,
-    required this.numberOfRooms, // Add this
-    required this.numberOfBathrooms, // Add this
-    required this.description,
-    required this.ownerName,
-    required this.ownerNumber,
-    required this.images,
+    required this.arName,
+    required this.longitude,
+    required this.latitude,
   });
+
+  factory Wilaya.fromJson(Map<String, dynamic> json) {
+    return Wilaya(
+      id: json['id'],
+      code: json['code'],
+      name: json['name'],
+      arName: json['ar_name'],
+      longitude: json['longitude'],
+      latitude: json['latitude'],
+    );
+  }
 }

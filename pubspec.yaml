@@ -53,6 +53,7 @@ flutter:
     - assets/images/
     - assets/vectors/
     - assets/fonts/
+    - assets/json/
 
   fonts:
     - family: Poppins
@@ -75,5 +76,8 @@ flutter:
     - family: Monadi
       fonts:
         - asset: assets/fonts/Monadi.ttf
-
-
+          #raleway.regular
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/raleway.regular.ttf
+          weight: 300

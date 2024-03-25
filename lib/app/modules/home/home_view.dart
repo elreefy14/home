@@ -478,11 +478,16 @@ class CustomDropdown extends StatelessWidget {
   final HomeController controller;
   final String txt;
   final List<String> menuItems;
+  //nullable width variable
+   final double? width;
+   final double? fontSize;
+   //font size
+
 
   CustomDropdown({
     required this.controller,
     required this.txt,
-    required this.menuItems,
+    required this.menuItems, this.width, this.fontSize,
   });
 
   @override
@@ -512,12 +517,13 @@ class CustomDropdown extends StatelessWidget {
         return DropdownMenuItem<String>(
           value: value,
           child: SizedBox(
-            width: 104.w,
+            width: width??104.w,
             child: Text(
               value,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 15.sp,
+                fontSize: fontSize??
+                15.sp,
                 fontFamily: 'Monadi',
                 fontWeight: FontWeight.w400,
               ),

@@ -1,22 +1,25 @@
-class UserModel {
-  String? name;
-  String? email;
-  String? token;
+class HouseModel {
+  final String distance;
+  final String name;
+  final String location;
+  final double price;
+  final int numberOfRooms; // Add this
+  final int numberOfBathrooms; // Add this
+  final String description;
+  final String ownerName;
+  final String ownerNumber;
+  final List<String> images;
 
-  UserModel({this.name, this.email, this.token});
-
-  UserModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    email = json['email'];
-    token = json['token'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
-    data['email'] = email;
-    data['token'] = token;
-    return data;
-  }
+  HouseModel({
+    required this.distance,
+    required this.name,
+    required this.location,
+    required this.price,
+    required this.numberOfRooms, // Add this
+    required this.numberOfBathrooms, // Add this
+    required this.description,
+    required this.ownerName,
+    required this.ownerNumber,
+    required this.images,
+  });
 }
-
