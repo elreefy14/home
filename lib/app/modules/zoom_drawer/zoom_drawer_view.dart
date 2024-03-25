@@ -22,23 +22,21 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
     List<HouseModel> houseList = List.generate(
       5,
           (index) => HouseModel(
-            distance: '${index + 1000}',
-            name: 'منزل ${
-                index + 1
-            } طوابق',
-            location: 'Location $index',
-            price: 100000.0 + index,
-            numberOfRooms: 3, // Specify the number of rooms
-            numberOfBathrooms: 2, // Specify the number of bathrooms
-            description: 'Description for House $index',
-            ownerName: 'Owner $index',
-            ownerNumber: '123456789$index',
-            images: [
-              'https://picsum.photos/200/300?random=$index',
-              'https://picsum.photos/200/300?random=${index + 1}',
-              'https://picsum.photos/200/300?random=${index + 2}',
-            ],
-          ),
+        distance: '${index + 1000}',
+        name: 'منزل ${index + 1} طوابق',
+        location: 'Location $index',
+        price: 100000.0 + index,
+        numberOfRooms: 3, // Specify the number of rooms
+        numberOfBathrooms: 2, // Specify the number of bathrooms
+        description: 'Description for House $index',
+        ownerName: 'Owner $index',
+        ownerNumber: '123456789$index',
+        images: [
+          'https://picsum.photos/200/300?random=$index',
+          'https://picsum.photos/200/300?random=${index + 1}',
+          'https://picsum.photos/200/300?random=${index + 2}',
+        ],
+      ),
     );
     return AdvancedDrawer(
       backdropColor: LightThemeColors.blueOcean,
@@ -49,13 +47,12 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
             IconButton(
               onPressed: () {},
               icon: SvgPicture.asset('assets/vectors/IC_Notification.svg',
-                  width: 24, height: 24,color:
-                  Colors.black),
+                  width: 24.w, height: 24.h, color: Colors.black),
             ),
           ],
           backgroundColor: Colors.white,
           title: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: 20.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -72,7 +69,6 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                 SizedBox(
                   width: 5.w,
                 ),
-
                 WilayaDropdown(controller: this.controller),
               ],
             ),
@@ -97,7 +93,6 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: SingleChildScrollView(
-         //   physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 SearchBar(),
@@ -106,20 +101,19 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 39,
+                  height: 39.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
                     itemCount: items.length,
-             itemBuilder: (context, index) {
-  return Row(
-    children: [
-      buildContainer(items[index], index),
-      if (index != items.length - 1) SizedBox(width: 31.w), // Add SizedBox if it's not the last item
-    ],
-  );
-},
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          buildContainer(items[index], index),
+                          if (index != items.length - 1) SizedBox(width: 31.w),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 SizedBox(height: 20.h),
@@ -142,108 +136,100 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                     ),
                   ],
                 ),
-                //horizontal list of images in containers like that
-                //   width: 226.70,
-                //   height: 286.44,
-                //15
                 SizedBox(
                   height: 15.h,
                 ),
                 Container(
                   width: double.infinity,
-                  height: 286.44,
+                  height: 286.44.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
                     itemCount: houseList.length,
                     itemBuilder: (context, index) {
                       return  Container(
-  width: 226.70,
-  height: 286.44,
-  margin: EdgeInsets.only(right: 10.w),
-  clipBehavior: Clip.antiAlias,
-  decoration: ShapeDecoration(
-    color: Colors.white,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  child: Stack(
-    children: [
-      Image.network(
-        houseList[index].images![0], // Use the first image from the images list
-        width: 226.70,
-        height: 286.44,
-        fit: BoxFit.cover,
-      ),
-      Positioned(
-  top: 11,
-  right: 11,
-  child: Container(
-    width: 100.91,
-    height: 25.13,
-    padding: const EdgeInsets.only(
-      top: 4.28,
-      left: 8.55,
-      right: 10.69,
-      bottom: 4.28,
-    ),
-    decoration: BoxDecoration(
-      color: Colors.black.withOpacity(0.24),
-      borderRadius: BorderRadius.circular(21.38),
-    ),
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Icon(
-            Icons.location_on, // Use the location_on icon
-            color: Colors.white,
-            size: 17.10,
-        ),
-        const SizedBox(width: 4.28),
-        Text(
-            '${houseList[index].distance} km', // Replace with the actual distance
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12.83,
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.w400,
-            ),
-        ),
-      ],
-    ),
-  ),
-),
-      Positioned(
-  bottom: 40,
-  left: 20,
-  child: SizedBox(
-    child: Text(
-      houseList[index].name!, // Use the name from the HouseModel
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 17.10,
-        fontFamily: 'Raleway',
-        fontWeight: FontWeight.w500,
-      ),
-    ),
-  ),
-),
-    ],
-  ),
-);
+                        width: 226.70.w,
+                        height: 286.44.h,
+                        margin: EdgeInsets.only(right: 10.w),
+                        clipBehavior: Clip.antiAlias,
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Stack(
+                          children: [
+                            Image.network(
+                              houseList[index].images![0],
+                              width: 226.70.w,
+                              height: 286.44.h,
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned(
+                              top: 11.h,
+                              right: 11.w,
+                              child: Container(
+                                width: 100.91.w,
+                                height: 25.13.h,
+                                padding: EdgeInsets.only(
+                                  top: 4.28.h,
+                                  left: 8.55.w,
+                                  right: 10.69.w,
+                                  bottom: 4.28.h,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.24),
+                                  borderRadius: BorderRadius.circular(21.38),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.location_on,
+                                      color: Colors.white,
+                                      size: 17.10.sp,
+                                    ),
+                                    SizedBox(width: 4.28.w),
+                                    Text(
+                                      '${houseList[index].distance} km',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12.83.sp,
+                                        fontFamily: 'Raleway',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 40.h,
+                              left: 20.w,
+                              child: SizedBox(
+                                child: Text(
+                                  houseList[index].name!,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17.10.sp,
+                                    fontFamily: 'Raleway',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
                     },
                   ),
                 ),
-                //25
                 SizedBox(
                   height: 25.h,
                 ),
-                //row اخترنا لك
-                //عرض المزيد//
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -263,98 +249,96 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                     ),
                   ],
                 ),
-//add vertcal list contaain row which contain
-              //image and  column of house name and house price row of
-             //20
                 SizedBox(
                   height: 20.h,
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
-//  width: double.infinity,
-//  height: 1000,
-  children: [
-    ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: houseList.length,
-      separatorBuilder: (context, index) => SizedBox(height: 10), // Add this
-      itemBuilder: (context, index) {
-        return Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                houseList[index].images![0],
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  houseList[index].name!,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Monadi',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '${houseList[index].price}دج',
-                  style: TextStyle(
-                    color: Color(0xFF0A8ED9),
-                    fontSize: 12,
-                    fontFamily: 'Raleway',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Row(
                   children: [
-                    SvgPicture.asset(
-                        'assets/vectors/IC_Bed.svg',
-                        width: 24, height: 24),
-                    SizedBox(width: 5),
-                    Text(
-                      '${houseList[index].numberOfRooms} غرف',
-                      style: TextStyle(
-                        color: Color(0xFF848484),
-                        fontSize: 12,
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(width: 50),
-                    SvgPicture.asset('assets/vectors/IC_Bath.svg',
-                        width: 24, height: 24),
-                    SizedBox(width: 5),
-                    Text(
-                      '${houseList[index].numberOfBathrooms} حمامات',
-                      style: TextStyle(
-                        color: Color(0xFF848484),
-                        fontSize: 12,
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.w400,
-                      ),
+                    ListView.separated(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: houseList.length,
+                      separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                      itemBuilder: (context, index) {
+                        return Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                houseList[index].images![0],
+                                width: 100.w,
+                                height: 100.h,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(width: 10.w),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  houseList[index].name!,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16.sp,
+                                    fontFamily: 'Monadi',
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 10.h),
+                                Text(
+                                  '${houseList[index].price}دج',
+                                  style: TextStyle(
+                                    color: Color(0xFF0A8ED9),
+                                    fontSize: 12.sp,
+                                    fontFamily: 'Raleway',
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 10.h),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/vectors/IC_Bed.svg',
+                                      width: 24.w,
+                                      height: 24.h,
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    Text(
+                                      '${houseList[index].numberOfRooms} غرف',
+                                      style: TextStyle(
+                                        color: Color(0xFF848484),
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Raleway',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    SizedBox(width: 50.w),
+                                    SvgPicture.asset(
+                                      'assets/vectors/IC_Bath.svg',
+                                      width: 24.w,
+                                      height: 24.h,
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    Text(
+                                      '${houseList[index].numberOfBathrooms} حمامات',
+                                      style: TextStyle(
+                                        color: Color(0xFF848484),
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Raleway',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),
-              ],
-            ),
-          ],
-        );
-      },
-    ),
-  ],
-),
-
-
               ],
             ),
           ),
@@ -364,6 +348,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
     );
   }
 }
+// The rest of your classes remain the same.
 class WilayaDropdown extends StatelessWidget {
   final ZoomDrawerController controller;
 
@@ -547,11 +532,11 @@ class CustomDrawer extends StatelessWidget {
 
 
 class SearchBar extends StatelessWidget {
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //20
         SizedBox(
           height: 20.h,
         ),
@@ -560,12 +545,7 @@ class SearchBar extends StatelessWidget {
             Container(
               width: 269,
               height: 48,
-              padding: const EdgeInsets.only(
-                top: 12,
-                left: 16.47,
-                right: 163,
-                bottom: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
                 color: Color(0xFFF6F6F6),
@@ -574,31 +554,33 @@ class SearchBar extends StatelessWidget {
                 ),
               ),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
                     'assets/vectors/IC_Search.svg',
                     width: 24.71,
                     height: 24,
                   ),
-                  const SizedBox(width: 10.82),
-                  Text(
-                    'خانة البحث',
-                    style: TextStyle(
-                      color: Color(0xFF848484),
-                      fontSize: 12,
-                      fontFamily: 'Raleway',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
+                  SizedBox(width: 10.82),
+                  Expanded(
+                    child: TextFormField(
+
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                        hintText: 'خانة البحث',
+                        border: InputBorder.none,
+                      ),
+                      style: TextStyle(
+                        color: Color(0xFF848484),
+                        fontSize: 12,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(width: 10), // Add this
-            //add png image
+            SizedBox(width: 10),
             Container(
               width: 40,
               height: 40,
