@@ -12,18 +12,18 @@ import 'routes.dart';
 class AppPages {
   static final routes = [
 
-
+    GetPage(
+      name: Routes.ZOOM_DRAWER,
+      page: () => const ZoomDrawerView(),
+      binding: ZoomDrawerBinding(),
+    ),
     GetPage(
       name: Routes.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
     ),
 
-    GetPage(
-      name: Routes.ZOOM_DRAWER,
-      page: () => const ZoomDrawerView(),
-      binding: ZoomDrawerBinding(),
-    ),
+
 
     GetPage(
       name: Routes.DETAILS,

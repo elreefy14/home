@@ -24,12 +24,16 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
           (index) => HouseModel(
         distance: '${index + 1000}',
         name: 'منزل ${index + 1} طوابق',
-        location: 'Location $index',
+        location: 'سطيف عين ارنات',
         price: 100000.0 + index,
         numberOfRooms: 3, // Specify the number of rooms
         numberOfBathrooms: 2, // Specify the number of bathrooms
-        description: 'Description for House  aksdkals kkmasodmlks cakdckas akmkdcmskl majsckam kadoskd oakoka oakoak oaskdoak kasdak oakfoafn aaposkpo$index',
-        ownerName: 'Owner $index',
+        description: ''
+            'هذا المنزل يحتوي على 3 غرف و 2 حمامات و صالة و مطبخ و حديقة و موقف للسيارات '
+            "و يقع في منطقة هادئة و قريبة من جميع الخدمات"
+            "المنزل مجهز بالكامل و جاهز للسكن الفوري",
+
+        ownerName: 'محمد بن علي',
         ownerNumber: '123456789$index',
         images: [
           'https://picsum.photos/200/300?random=$index',
@@ -91,7 +95,9 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w
+         , vertical: 20.h
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -147,81 +153,85 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                     shrinkWrap: true,
                     itemCount: houseList.length,
                     itemBuilder: (context, index) {
-                      return  Container(
-                        width: 226.70.w,
-                        height: 286.44.h,
-                        margin: EdgeInsets.only(right: 10.w),
-                        clipBehavior: Clip.antiAlias,
-                        decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                      return  InkWell(onTap: () {
+                        homeController.goToDetails(houseList[index]);
+                      },
+                        child: Container(
+                          width: 226.70.w,
+                          height: 286.44.h,
+                          margin: EdgeInsets.only(right: 10.w),
+                          clipBehavior: Clip.antiAlias,
+                          decoration: ShapeDecoration(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Image.network(
-                              houseList[index].images![0],
-                              width: 226.70.w,
-                              height: 286.44.h,
-                              fit: BoxFit.cover,
-                            ),
-                            Positioned(
-                              top: 11.h,
-                              right: 11.w,
-                              child: Container(
-                                width: 100.91.w,
-                                height: 25.13.h,
-                                padding: EdgeInsets.only(
-                                  top: 4.28.h,
-                                  left: 8.55.w,
-                                  right: 10.69.w,
-                                  bottom: 4.28.h,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.24),
-                                  borderRadius: BorderRadius.circular(21.38),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.location_on,
-                                      color: Colors.white,
-                                      size: 17.10.sp,
-                                    ),
-                                    SizedBox(width: 4.28.w),
-                                    Text(
-                                      '${houseList[index].distance} km',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12.83.sp,
-                                        fontFamily: 'Raleway',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          child: Stack(
+                            children: [
+                              Image.network(
+                                houseList[index].images![0],
+                                width: 226.70.w,
+                                height: 286.44.h,
+                                fit: BoxFit.cover,
                               ),
-                            ),
-                            Positioned(
-                              bottom: 40.h,
-                              left: 20.w,
-                              child: SizedBox(
-                                child: Text(
-                                  houseList[index].name!,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17.10.sp,
-                                    fontFamily: 'Raleway',
-                                    fontWeight: FontWeight.w500,
+                              Positioned(
+                                top: 11.h,
+                                right: 11.w,
+                                child: Container(
+                                  width: 100.91.w,
+                                  height: 25.13.h,
+                                  padding: EdgeInsets.only(
+                                    top: 4.28.h,
+                                    left: 8.55.w,
+                                    right: 10.69.w,
+                                    bottom: 4.28.h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.24),
+                                    borderRadius: BorderRadius.circular(21.38),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.location_on,
+                                        color: Colors.white,
+                                        size: 17.10.sp,
+                                      ),
+                                      SizedBox(width: 4.28.w),
+                                      Text(
+                                        '${houseList[index].distance} km',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.83.sp,
+                                          fontFamily: 'Raleway',
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                              Positioned(
+                                bottom: 40.h,
+                                left: 20.w,
+                                child: SizedBox(
+                                  child: Text(
+                                    houseList[index].name!,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.10.sp,
+                                      fontFamily: 'Raleway',
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -295,7 +305,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                                     style: TextStyle(
                                       color: Color(0xFF0A8ED9),
                                       fontSize: 12.sp,
-                                      fontFamily: 'Raleway',
+                                      fontFamily: 'Monadi',
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -313,7 +323,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                                         style: TextStyle(
                                           color: Color(0xFF848484),
                                           fontSize: 12.sp,
-                                          fontFamily: 'Raleway',
+                                          fontFamily: 'Monadi',
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),
@@ -329,7 +339,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                                         style: TextStyle(
                                           color: Color(0xFF848484),
                                           fontSize: 12.sp,
-                                          fontFamily: 'Raleway',
+                                          fontFamily: 'Monadi',
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),

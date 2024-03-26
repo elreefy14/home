@@ -79,5 +79,4 @@ flutter:
           #raleway.regular
     - family: Raleway
       fonts:
-        - asset: assets/fonts/raleway.regular.ttf
-          weight: 300
+        - asset: assets/fonts/Raleway-VariableFont_wght.ttf

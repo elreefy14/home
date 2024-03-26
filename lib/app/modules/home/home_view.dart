@@ -98,7 +98,8 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 82.w,
                                 child: CustomText(
-                                  txt: 'ارض',
+                                  txt:
+                                  'طبيعة العقار',
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Monadi',
@@ -124,7 +125,7 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 82.w,
                                 child: CustomText(
-                                  txt: 'ارض',
+                                  txt: 'الولاية',
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Monadi',
@@ -144,7 +145,7 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 82.w,
                                 child: CustomText(
-                                  txt: 'ارض',
+                                  txt: 'البلدية',
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Monadi',
@@ -236,7 +237,7 @@ class HomeView extends GetView<HomeController> {
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(20.r),
                             image: DecorationImage(
-                              image: AssetImage('assets/images/house.png'),
+                              image: NetworkImage('https://cdn.houseplansservices.com/product/nqdpimgoer3e4hde655glti1jq/w1024.JPG?v=18'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -285,7 +286,8 @@ class HomeView extends GetView<HomeController> {
                             height: 71.h,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage("https://via.placeholder.com/72x71"),
+                                //house image from network
+                                image: NetworkImage('https://cdn.houseplansservices.com/product/nqdpimgoer3e4hde655glti1jq/w1024.JPG?v=18'),
                                 fit: BoxFit.fill,
                               ),
                                borderRadius: BorderRadius.circular(10),
@@ -298,7 +300,7 @@ class HomeView extends GetView<HomeController> {
                             height: 71.h,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage("https://via.placeholder.com/72x71"),
+                                image: NetworkImage("https://cdn.houseplansservices.com/product/nqdpimgoer3e4hde655glti1jq/w1024.JPG?v=18"),
                                 fit: BoxFit.fill,
                               ),
                                     borderRadius: BorderRadius.circular(10),
@@ -310,7 +312,7 @@ class HomeView extends GetView<HomeController> {
                             height: 71.h,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage("https://via.placeholder.com/72x71"),
+                                image: NetworkImage("https://cdn.houseplansservices.com/product/nqdpimgoer3e4hde655glti1jq/w1024.JPG?v=18"),
                                 fit: BoxFit.fill,
                               ),
                                     borderRadius: BorderRadius.circular(10),
@@ -324,7 +326,7 @@ class HomeView extends GetView<HomeController> {
                                 height: 71.h,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: NetworkImage("https://via.placeholder.com/72x71"),
+                                    image: NetworkImage("https://cdn.luxatic.com/wp-content/uploads/2016/10/72-Million-Beverly-Hills-Mansion-02.jpg"),
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius: BorderRadius.circular(10),
@@ -338,7 +340,7 @@ class HomeView extends GetView<HomeController> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.sp,
-                                      fontFamily: 'Raleway',
+                                      fontFamily: 'Monadi',
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -394,7 +396,7 @@ class HomeView extends GetView<HomeController> {
                         height: 185.h,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage("https://via.placeholder.com/340x185"),
+                            image: NetworkImage("https://th.bing.com/th/id/OIP.ZPKuUY0mrE5VBDOS1oAuAQHaEF?rs=1&pid=ImgDetMain"),
                             fit: BoxFit.fill,
                           ),
                           borderRadius: BorderRadius.circular(23.r),
