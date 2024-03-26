@@ -28,7 +28,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
         price: 100000.0 + index,
         numberOfRooms: 3, // Specify the number of rooms
         numberOfBathrooms: 2, // Specify the number of bathrooms
-        description: 'Description for House $index',
+        description: 'Description for House  aksdkals kkmasodmlks cakdckas akmkdcmskl majsckam kadoskd oakoka oakoak oaskdoak kasdak oakfoafn aaposkpo$index',
         ownerName: 'Owner $index',
         ownerNumber: '123456789$index',
         images: [
@@ -261,79 +261,84 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
                       itemCount: houseList.length,
                       separatorBuilder: (context, index) => SizedBox(height: 10.h),
                       itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                houseList[index].images![0],
-                                width: 100.w,
-                                height: 100.h,
-                                fit: BoxFit.cover,
+                        return InkWell(
+                          onTap: () {
+                            homeController.goToDetails(houseList[index]);
+                          },
+                          child: Row(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  houseList[index].images![0],
+                                  width: 100.w,
+                                  height: 100.h,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 10.w),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  houseList[index].name!,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16.sp,
-                                    fontFamily: 'Monadi',
-                                    fontWeight: FontWeight.w400,
+                              SizedBox(width: 10.w),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    houseList[index].name!,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Monadi',
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10.h),
-                                Text(
-                                  '${houseList[index].price}دج',
-                                  style: TextStyle(
-                                    color: Color(0xFF0A8ED9),
-                                    fontSize: 12.sp,
-                                    fontFamily: 'Raleway',
-                                    fontWeight: FontWeight.w400,
+                                  SizedBox(height: 10.h),
+                                  Text(
+                                    '${houseList[index].price}دج',
+                                    style: TextStyle(
+                                      color: Color(0xFF0A8ED9),
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Raleway',
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10.h),
-                                Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/vectors/IC_Bed.svg',
-                                      width: 24.w,
-                                      height: 24.h,
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text(
-                                      '${houseList[index].numberOfRooms} غرف',
-                                      style: TextStyle(
-                                        color: Color(0xFF848484),
-                                        fontSize: 12.sp,
-                                        fontFamily: 'Raleway',
-                                        fontWeight: FontWeight.w400,
+                                  SizedBox(height: 10.h),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/vectors/IC_Bed.svg',
+                                        width: 24.w,
+                                        height: 24.h,
                                       ),
-                                    ),
-                                    SizedBox(width: 50.w),
-                                    SvgPicture.asset(
-                                      'assets/vectors/IC_Bath.svg',
-                                      width: 24.w,
-                                      height: 24.h,
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text(
-                                      '${houseList[index].numberOfBathrooms} حمامات',
-                                      style: TextStyle(
-                                        color: Color(0xFF848484),
-                                        fontSize: 12.sp,
-                                        fontFamily: 'Raleway',
-                                        fontWeight: FontWeight.w400,
+                                      SizedBox(width: 5.w),
+                                      Text(
+                                        '${houseList[index].numberOfRooms} غرف',
+                                        style: TextStyle(
+                                          color: Color(0xFF848484),
+                                          fontSize: 12.sp,
+                                          fontFamily: 'Raleway',
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                                      SizedBox(width: 50.w),
+                                      SvgPicture.asset(
+                                        'assets/vectors/IC_Bath.svg',
+                                        width: 24.w,
+                                        height: 24.h,
+                                      ),
+                                      SizedBox(width: 5.w),
+                                      Text(
+                                        '${houseList[index].numberOfBathrooms} حمامات',
+                                        style: TextStyle(
+                                          color: Color(0xFF848484),
+                                          fontSize: 12.sp,
+                                          fontFamily: 'Raleway',
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         );
                       },
                     ),

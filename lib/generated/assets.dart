@@ -47,9 +47,13 @@ class Assets {
   static const String vectorsC = 'assets/vectors/c.png';
   static const String vectorsCalendar = 'assets/vectors/calendar.svg';
   static const String vectorsCamera = 'assets/vectors/camera.svg';
+  static const String vectorsFrame = 'assets/vectors/Frame.svg';
+  static const String vectorsFrame (1) = 'assets/vectors/Frame (1).svg';
+  static const String vectorsICBack = 'assets/vectors/IC_Back.svg';
   static const String vectorsICBath = 'assets/vectors/IC_Bath.svg';
   static const String vectorsICBed = 'assets/vectors/IC_Bed.svg';
   static const String vectorsICBookmark = 'assets/vectors/IC_Bookmark.svg';
+  static const String vectorsICBookmark (1) = 'assets/vectors/IC_Bookmark (1).svg';
   static const String vectorsICFilter = 'assets/vectors/IC_Filter.svg';
   static const String vectorsICHelp = 'assets/vectors/IC_Help.svg';
   static const String vectorsICHome = 'assets/vectors/IC_Home.svg';

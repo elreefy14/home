@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/data/models/house_model.dart';
 
 import '../../../utils/constants.dart';
 import '../../data/remote/api_call_status.dart';
@@ -46,5 +47,10 @@ class HomeController extends GetxController {
   void onInit() {
     getData();
     super.onInit();
+  }
+
+  void goToDetails(HouseModel house) {
+    Get.toNamed('/details',
+        arguments: house);
   }
 }

@@ -9,6 +9,9 @@ class HouseModel {
   final String ownerName;
   final String ownerNumber;
   final List<String> images;
+  //String ownerImageUrl;
+  final String ownerImageUrl = 'https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png';
+
 
   HouseModel({
     required this.distance,
@@ -21,5 +24,7 @@ class HouseModel {
     required this.ownerName,
     required this.ownerNumber,
     required this.images,
+    // required this.ownerImageUrl,
   });
+
 }
