@@ -1,9 +1,9 @@
     import 'package:get/get.dart';
-import '../modules/home/home_binding.dart';
-import '../modules/home/home_view.dart';
+import '../modules/home/add_product_binding.dart';
+import '../modules/home/add_product_view.dart';
 import 'routes.dart';
-import '../modules/zoom_drawer/zoom_drawer_binding.dart';
-import '../modules/zoom_drawer/zoom_drawer_view.dart';
+import '../modules/zoom_drawer/home_binding.dart';
+import '../modules/zoom_drawer/home_view.dart';
 import 'routes.dart';
 import '../modules/details/details_binding.dart';
 import '../modules/details/details_view.dart';
@@ -14,13 +14,13 @@ class AppPages {
 
     GetPage(
       name: Routes.ZOOM_DRAWER,
-      page: () => const ZoomDrawerView(),
-      binding: ZoomDrawerBinding(),
+      page: () => const HomeView(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: Routes.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
+      page: () => const AddProductView(),
+      binding: AddProductBinding(),
     ),
 
 

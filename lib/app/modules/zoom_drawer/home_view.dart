@@ -8,16 +8,16 @@ import '../../../config/theme/light_theme_colors.dart';
 import '../../components/custom_text.dart';
 import '../../data/models/house_model.dart';
 import '../../data/models/wilaya.dart';
-import '../home/home_controller.dart';
-import '../home/home_view.dart';
-import './zoom_drawer_controller.dart';
+import '../home/add_product_controller.dart';
+import '../home/add_product_view.dart';
+import './home_controller.dart';
 
-class ZoomDrawerView extends GetView<ZoomDrawerController> {
-  const ZoomDrawerView({Key? key}) : super(key: key);
+class HomeView extends GetView<HomeController> {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.put(HomeController()); // Register and get the instance of HomeController
+    AddProductController homeController = Get.put(AddProductController()); // Register and get the instance of HomeController
     final items = ['بيع', 'ايجار', 'مبنى', 'غير مبنية'];
     List<HouseModel> houseList = List.generate(
       5,
@@ -365,7 +365,7 @@ class ZoomDrawerView extends GetView<ZoomDrawerController> {
 }
 // The rest of your classes remain the same.
 class WilayaDropdown extends StatelessWidget {
-  final ZoomDrawerController controller;
+  final HomeController controller;
 
   WilayaDropdown({
     required this.controller,
@@ -622,7 +622,7 @@ class SearchBar extends StatelessWidget {
 }
 
 Widget buildContainer(String text, int index) {
-  ZoomDrawerController controller = Get.find<ZoomDrawerController>();
+  HomeController controller = Get.find<HomeController>();
   return Obx(() {
     return GestureDetector(
       onTap: () {

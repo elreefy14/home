@@ -6,15 +6,16 @@ import 'package:getx_skeleton/app/components/api_handle_ui_widget.dart';
 import 'package:getx_skeleton/app/components/custom_button.dart';
 import 'package:getx_skeleton/app/components/custom_text.dart';
 
-import 'home_controller.dart';
+import '../../data/models/wilaya.dart';
+import 'add_product_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class AddProductView extends GetView<AddProductController> {
+  const AddProductView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<HomeController>(
+      body: GetBuilder<AddProductController>(
         builder: (_) {
           return ApiHandleUiWidget(
             successWidget: SingleChildScrollView(
@@ -88,8 +89,10 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              CustomDropdown(controller: controller, txt: 'Your Text', menuItems: ['One', 'Two', 'Three', 'Four']),
-                            ],
+                              CustomDropdown(controller: controller, txt: 'Your Text', menuItems: ['ايجار', 'بيع', 'ايجار او بيع']
+                              ,dropdownValue: controller.dropdownValue1,
+
+                              )],
                           ),
                           Spacer(),
                           Column(
@@ -109,7 +112,10 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              CustomDropdown(controller: controller, txt: 'Your Text', menuItems: ['One', 'Two', 'Three', 'Four'])                           ],
+                              CustomDropdown(dropdownValue: controller.dropdownValue2
+                                  ,controller: controller, txt: 'Your Text', menuItems: ['مبنى','غير مبنى']
+                              )
+                            ],
                           ),
                         ],
                       ),
@@ -135,8 +141,14 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              CustomDropdown(controller: controller, txt: 'Your Text', menuItems: ['One', 'Two', 'Three', 'Four']),
-                            ],
+                              CustomDropdown(
+                                isWilaya: true,
+                                dropdownValue: controller.wilayaDropDown
+                                ,controller: controller, txt: 'Your Text',
+                                menuItems: //list of arabic names of wilaya from controller
+                                controller.arNamesOfWilaya,
+                              ),
+                                ],
                           ),
                           Spacer(),
                           Column(
@@ -155,7 +167,12 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              CustomDropdown(controller: controller, txt: 'Your Text', menuItems: ['One', 'Two', 'Three', 'Four'])                           ],
+                              CustomDropdown(
+                                  dropdownValue: controller.dropdownValue4,
+                                  controller: controller, txt: 'Your Text',
+                                  menuItems: controller.arCommunes,
+                                  )
+                            ],
                           ),
                         ],
                       ),
@@ -416,8 +433,8 @@ class HomeView extends GetView<HomeController> {
                       ),
                       child: SvgPicture.asset(
                         'assets/vectors/map.svg',
-                        width: 15.643,
-                        height: 15.643,
+                        width: 15.643.w,
+                        height: 15.643.h,
                       ),
                     ),
                     SizedBox(height: 5.h,),
@@ -477,62 +494,76 @@ class HomeView extends GetView<HomeController> {
   }
 }
 class CustomDropdown extends StatelessWidget {
-  final HomeController controller;
+  final AddProductController controller;
   final String txt;
   final List<String> menuItems;
-  //nullable width variable
-   final double? width;
-   final double? fontSize;
-   //font size
-
+  final double? width;
+  final double? fontSize;
+  final RxString dropdownValue;
+  final bool? isWilaya;
 
   CustomDropdown({
     required this.controller,
     required this.txt,
-    required this.menuItems, this.width, this.fontSize,
+    required this.menuItems,
+    required this.dropdownValue,
+    this.width,
+    this.fontSize,
+    this.isWilaya = false
   });
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: controller.dropdownValue.value,
-      icon: const Icon(Icons.keyboard_arrow_down,
-        color: Color(0xFF838383),
-        size: 24,
-      ),
-      iconSize: 24,
-      elevation: 16,
-      style: TextStyle(
-        color: Colors.red,
-        fontSize: 15.sp,
-        fontFamily: 'Monadi',
-        fontWeight: FontWeight.w400,
-      ),
-      onChanged: (String? newValue) {
-        controller.dropdownValue.value = newValue!;
-      },
-      underline: Container(
-        height: .1,
-        color: Colors.white,
-      ),
-      items: menuItems.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: SizedBox(
-            width: width??104.w,
-            child: Text(
-              value,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: fontSize??
-                15.sp,
-                fontFamily: 'Monadi',
-                fontWeight: FontWeight.w400,
+    return Obx(() {
+      return DropdownButton<String>(
+        value: menuItems.contains(dropdownValue.value) ? dropdownValue.value : null,
+        icon:  Icon(Icons.keyboard_arrow_down,
+          color: Color(0xFF838383),
+          size: 24.w, // Use .w for width
+        ),
+        iconSize: 24.w, // Use .w for width
+        elevation: 16,
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: (fontSize??15).sp, // Use .sp for font size
+          fontFamily: 'Monadi',
+          fontWeight: FontWeight.w400,
+        ),
+        onChanged: (String? newValue) async {
+          dropdownValue.value = newValue!;
+          print('newValue:\n\n\n\n $newValue');
+          print('index: ${menuItems.indexOf(newValue)}');
+          if(isWilaya??false) {
+            int selectedWilaya = menuItems.indexOf(newValue) + 1;
+            controller.loadCommuneArNames(
+              selectedWilaya.toString(),
+            ).then((data) {
+              controller.arCommunes = data;
+            });
+          }
+        },
+        underline: Container(
+          height: .1.h, // Use .h for height
+          color: Colors.white,
+        ),
+        items: menuItems.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: SizedBox(
+              width: (width??104).w, // Use .w for width
+              child: Text(
+                value,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: (fontSize??15).sp, // Use .sp for font size
+                  fontFamily: 'Monadi',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
-          ),
-        );
-      }).toList(),
-    );
+          );
+        }).toList(),
+      );
+    });
   }
 }

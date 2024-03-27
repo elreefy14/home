@@ -9,7 +9,7 @@ import '../../data/models/wilaya.dart';
 import '../../data/remote/api_call_status.dart';
 import '../../data/remote/base_client.dart';
 
-class ZoomDrawerController extends GetxController {
+class HomeController extends GetxController {
   // hold data coming from api
   List<dynamic>? data;
   var selectedIndex = 0.obs;
