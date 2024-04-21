@@ -48,7 +48,7 @@ Future<void> main() async {
               ),
             );
           },
-          initialRoute: AppPages.routes[1].name,
+          initialRoute: AppPages.routes[0].name,
           // first screen to show when app is running
           getPages: AppPages.routes,
           // app screens
