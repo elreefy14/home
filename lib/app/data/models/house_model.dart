@@ -10,7 +10,7 @@ class HouseModel {
   final String ownerNumber;
   final List<String> images;
   //String ownerImageUrl;
-  final String ownerImageUrl = 'https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png';
+  final String ownerImageUrl = 'assets/images/person1.png';
 
 
   HouseModel({

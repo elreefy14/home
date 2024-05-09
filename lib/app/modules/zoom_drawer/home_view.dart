@@ -3,49 +3,57 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:getx_skeleton/app/modules/home/add_product_view.dart';
+import 'package:getx_skeleton/app/routes/routes.dart';
 import 'package:getx_skeleton/config/theme/my_fonts.dart';
 import '../../../config/theme/light_theme_colors.dart';
 import '../../components/custom_text.dart';
 import '../../data/models/house_model.dart';
 import '../../data/models/wilaya.dart';
 import '../home/add_product_controller.dart';
-import '../home/add_product_view.dart';
 import './home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
+
+  final AddProductController homeController = Get.put(
+      AddProductController()); // Register and get the instance of HomeController
+  final items = ['بيع', 'ايجار', 'مبنى', 'غير مبنية'];
+  final List<HouseModel> houseList = List.generate(
+    5,
+    (index) => HouseModel(
+      distance: '${index + 1000}',
+      name: 'منزل ${index + 1} طوابق',
+      location: 'سطيف عين ارنات',
+      price: 100000.0 + index,
+      numberOfRooms: 3, // Specify the number of rooms
+      numberOfBathrooms: 2, // Specify the number of bathrooms
+      description: ''
+          'هذا المنزل يحتوي على 3 غرف و 2 حمامات و صالة و مطبخ و حديقة و موقف للسيارات '
+          "و يقع في منطقة هادئة و قريبة من جميع الخدمات"
+          "المنزل مجهز بالكامل و جاهز للسكن الفوري",
+
+      ownerName: 'محمد بن علي',
+      ownerNumber: '123456789$index',
+      images: [
+        'assets/images/house${index + 1}.jpg',
+        'assets/images/house${index + 2}.jpg',
+        'assets/images/house${index + 3}.jpg',
+      ],
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
-    AddProductController homeController = Get.put(AddProductController()); // Register and get the instance of HomeController
-    final items = ['بيع', 'ايجار', 'مبنى', 'غير مبنية'];
-    List<HouseModel> houseList = List.generate(
-      5,
-          (index) => HouseModel(
-        distance: '${index + 1000}',
-        name: 'منزل ${index + 1} طوابق',
-        location: 'سطيف عين ارنات',
-        price: 100000.0 + index,
-        numberOfRooms: 3, // Specify the number of rooms
-        numberOfBathrooms: 2, // Specify the number of bathrooms
-        description: ''
-            'هذا المنزل يحتوي على 3 غرف و 2 حمامات و صالة و مطبخ و حديقة و موقف للسيارات '
-            "و يقع في منطقة هادئة و قريبة من جميع الخدمات"
-            "المنزل مجهز بالكامل و جاهز للسكن الفوري",
-
-        ownerName: 'محمد بن علي',
-        ownerNumber: '123456789$index',
-        images: [
-          'https://picsum.photos/200/300?random=$index',
-          'https://picsum.photos/200/300?random=${index + 1}',
-          'https://picsum.photos/200/300?random=${index + 2}',
-        ],
-      ),
-    );
     return AdvancedDrawer(
       backdropColor: LightThemeColors.blueOcean,
       controller: this.controller.drawerController,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              Get.to(AddProductView());
+            }),
         appBar: AppBar(
           actions: [
             IconButton(
@@ -95,9 +103,7 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w
-         , vertical: 20.h
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -153,9 +159,10 @@ class HomeView extends GetView<HomeController> {
                     shrinkWrap: true,
                     itemCount: houseList.length,
                     itemBuilder: (context, index) {
-                      return  InkWell(onTap: () {
-                        homeController.goToDetails(houseList[index]);
-                      },
+                      return InkWell(
+                        onTap: () {
+                          homeController.goToDetails(houseList[index]);
+                        },
                         child: Container(
                           width: 226.70.w,
                           height: 286.44.h,
@@ -169,7 +176,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                           child: Stack(
                             children: [
-                              Image.network(
+                              Image.asset(
                                 houseList[index].images![0],
                                 width: 226.70.w,
                                 height: 286.44.h,
@@ -194,7 +201,8 @@ class HomeView extends GetView<HomeController> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Icon(
                                         Icons.location_on,
@@ -269,7 +277,8 @@ class HomeView extends GetView<HomeController> {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: houseList.length,
-                      separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 10.h),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
@@ -279,7 +288,7 @@ class HomeView extends GetView<HomeController> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
+                                child: Image.asset(
                                   houseList[index].images![0],
                                   width: 100.w,
                                   height: 100.h,
@@ -363,6 +372,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+
 // The rest of your classes remain the same.
 class WilayaDropdown extends StatelessWidget {
   final HomeController controller;
@@ -376,7 +386,8 @@ class WilayaDropdown extends StatelessWidget {
     return Obx(() {
       return DropdownButton<String>(
         value: controller.dropdownValue.value,
-        icon: const Icon(Icons.keyboard_arrow_down,
+        icon: const Icon(
+          Icons.keyboard_arrow_down,
           color: Color(0xFF838383),
           size: 24,
         ),
@@ -395,7 +406,8 @@ class WilayaDropdown extends StatelessWidget {
           height: .1,
           color: Colors.white,
         ),
-        items: controller.wilayaList.map<DropdownMenuItem<String>>((Wilaya wilaya) {
+        items: controller.wilayaList
+            .map<DropdownMenuItem<String>>((Wilaya wilaya) {
           return DropdownMenuItem<String>(
             value: wilaya.name,
             child: Text(
@@ -437,32 +449,22 @@ class CustomDrawer extends StatelessWidget {
                 height: 50.h,
               ),
 
-
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Home.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Home.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('الرئيسية'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Profile.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Profile.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('الملف الشخصي'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Location.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Location.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('بقربي'),
               ),
               //white line divider Colors.white.withOpacity(0.5)
@@ -474,29 +476,20 @@ class CustomDrawer extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Bookmark.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Bookmark.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('محفوظة'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Notification.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Notification.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('الإشعارات'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Message.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Message.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('الرسائل'),
               ),
 //white line divider Colors.white.withOpacity(0.5)
@@ -508,34 +501,22 @@ class CustomDrawer extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Setting.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Setting.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('الإعدادات'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Help.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Help.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('اتصل بنا'),
               ),
               ListTile(
                 onTap: () {},
-
-                leading:   SvgPicture.asset('assets/vectors/IC_Logout.svg',
-                    width: 24, height: 24,color:
-                    Colors.white),
-
+                leading: SvgPicture.asset('assets/vectors/IC_Logout.svg',
+                    width: 24, height: 24, color: Colors.white),
                 title: MyFonts.font15Weight400ColorWhite('تسجيل الخروج'),
               ),
-
-
-
             ],
           ),
         ),
@@ -543,8 +524,6 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
-
-
 
 class SearchBar extends StatelessWidget {
   final TextEditingController _searchController = TextEditingController();
@@ -578,7 +557,6 @@ class SearchBar extends StatelessWidget {
                   SizedBox(width: 10.82),
                   Expanded(
                     child: TextFormField(
-
                       controller: _searchController,
                       decoration: InputDecoration(
                         hintText: 'خانة البحث',
@@ -632,7 +610,9 @@ Widget buildContainer(String text, int index) {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          color: controller.selectedIndex.value == index ? Colors.blue : Color(0xFFF6F6F6),
+          color: controller.selectedIndex.value == index
+              ? Colors.blue
+              : Color(0xFFF6F6F6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -642,7 +622,9 @@ Widget buildContainer(String text, int index) {
             text,
             style: TextStyle(
               //if selected change color to white
-              color: controller.selectedIndex.value == index ? Colors.white : Color(0xFF848484),
+              color: controller.selectedIndex.value == index
+                  ? Colors.white
+                  : Color(0xFF848484),
               fontSize: 12,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.w400,

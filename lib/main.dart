@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'app/data/local/shared_pref.dart';
 import 'app/routes/app_routes.dart';
+import 'app/routes/routes.dart';
 import 'config/theme/my_theme.dart';
 import 'config/translations/localization_service.dart';
 import 'utils/awesome_notifications_helper.dart';
@@ -48,7 +49,7 @@ Future<void> main() async {
               ),
             );
           },
-          initialRoute: AppPages.routes[1].name,
+          initialRoute: Routes.ZOOM_DRAWER,
           // first screen to show when app is running
           getPages: AppPages.routes,
           // app screens

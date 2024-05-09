@@ -30,6 +30,8 @@ dependencies:
 
   flutter:
     sdk: flutter
+  file_picker: ^8.0.0+1
+  image_picker: ^1.0.7
 
 dev_dependencies:
   mockito:
