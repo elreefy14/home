@@ -551,6 +551,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+<<<<<<< HEAD
   mime:
     dependency: transitive
     description:
@@ -559,6 +560,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+=======
+>>>>>>> b3f05bea1eabbb04d3128be8c01a81776dca951f
   mockito:
     dependency: "direct dev"
     description:
@@ -885,5 +888,9 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
+<<<<<<< HEAD
   dart: ">=3.2.0 <4.0.0"
+=======
+  dart: ">=3.2.0-194.0.dev <4.0.0"
+>>>>>>> b3f05bea1eabbb04d3128be8c01a81776dca951f
   flutter: ">=3.10.0"
