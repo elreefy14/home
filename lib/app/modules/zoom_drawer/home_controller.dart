@@ -11,7 +11,7 @@ class HomeController extends GetxController {
   // hold data coming from api
   List<dynamic>? data;
   var selectedIndex = 0.obs;
-  var dropdownValue = ''.obs;
+  late Wilaya dropdownValue;
   var wilayaList = <Wilaya>[].obs;
 
   @override
@@ -20,7 +20,7 @@ class HomeController extends GetxController {
     loadWilayaData().then((data) {
       wilayaList.value = data;
       if (data.isNotEmpty) {
-        dropdownValue.value = data[0].name;
+        dropdownValue = data[0];
       }
     });
   }
@@ -33,6 +33,8 @@ class HomeController extends GetxController {
     List<Wilaya> wilayaData =
         jsonResponse.map((item) => Wilaya.fromJson(item)).toList();
     print('Wilaya Data: $wilayaData'); // Print the list of Wilaya objects
+    apiCallStatus = ApiCallStatus.success;
+    update();
     return wilayaData;
   }
 
@@ -45,6 +47,11 @@ class HomeController extends GetxController {
     }
   }
 
+  void changeWilaya(Wilaya wilaya) {
+    dropdownValue = wilaya;
+    update();
+  }
+
   // api call status
-  ApiCallStatus apiCallStatus = ApiCallStatus.success;
+  ApiCallStatus apiCallStatus = ApiCallStatus.loading;
 }

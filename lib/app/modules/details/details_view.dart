@@ -9,6 +9,7 @@ import '../../components/custom_button.dart';
 import '../../components/custom_snackbar.dart';
 import '../../components/custom_text.dart';
 import '../../data/models/house_model.dart';
+import '../../data/remote/media.dart';
 import './details_controller.dart';
 
 class DetailsView extends GetView<DetailsController> {
@@ -504,7 +505,10 @@ class DetailsView extends GetView<DetailsController> {
                             width: 117.w,
                             high: 44.h,
                             borderRadius: 10.r,
-                            onPressed: () {},
+                            onPressed: () {
+                              UrlService()
+                                  .launchPhoneCall(phoneNumber: "0562413935");
+                            },
                           ),
                         ],
                       ),

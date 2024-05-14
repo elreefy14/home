@@ -7,11 +7,12 @@ class HouseModel {
   final int numberOfBathrooms; // Add this
   final String description;
   final String ownerName;
+  final String wilaya;
   final String ownerNumber;
   final List<String> images;
+  final bool isRenting;
   //String ownerImageUrl;
   final String ownerImageUrl = 'assets/images/person1.png';
-
 
   HouseModel({
     required this.distance,
@@ -24,7 +25,8 @@ class HouseModel {
     required this.ownerName,
     required this.ownerNumber,
     required this.images,
+    required this.isRenting,
+    required this.wilaya,
     // required this.ownerImageUrl,
   });
-
 }
