@@ -506,8 +506,17 @@ class DetailsView extends GetView<DetailsController> {
                             high: 44.h,
                             borderRadius: 10.r,
                             onPressed: () {
-                              UrlService()
-                                  .launchPhoneCall(phoneNumber: "0562413935");
+                              print("hello");
+                              UrlService().launchEmail(messege: """   
+                                  
+                                  اريد طلب منزل و هاهي التفاصيل
+                                  ${house.wilaya}   : الموقع
+                                 رسمي : نوع العقد
+                                  السعر :  ${house.price} 
+                                
+                                  عدد الغرف :  ${house.numberOfRooms} 
+                                 
+                                  """, email: 'dzimmobilier104@gmail.com');
                             },
                           ),
                         ],

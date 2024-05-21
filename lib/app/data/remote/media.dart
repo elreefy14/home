@@ -10,13 +10,12 @@ class UrlService {
         .join('&');
   }
 
-  launchEmail({String? email}) async {
+  launchEmail({String? email, required String messege}) async {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
       path: email,
-      query: _encodeQueryParameters(<String, String>{
-        'subject': 'Support',
-      }),
+      query: _encodeQueryParameters(
+          <String, String>{'subject': 'طلب عقار', 'body': messege}),
     );
 
     launchUrl(emailLaunchUri);
@@ -41,6 +40,4 @@ class UrlService {
     );
     await launchUrl(launchUri);
   }
-
- 
 }

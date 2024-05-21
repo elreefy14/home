@@ -229,4 +229,23 @@ final List<HouseModel> houseList = [
     ],
     isRenting: true,
   ),
+  HouseModel(
+    wilaya: "26",
+    distance: '${1 + 1000}',
+    name: ' ارض فلاحية 5 هكتار',
+    location: 'المدية عين بوسيف',
+    price: 250000.0 + 1,
+    numberOfRooms: 0, // Specify the number of rooms
+    numberOfBathrooms: 0, // Specify the number of bathrooms
+    description:
+        "ارض فلاحية عين بوسيف 5 هكتار مرحبا بكم لتفاصيل اكثر تواصلو معنا",
+
+    ownerName: 'محمد بن مروان',
+    ownerNumber: '123456789',
+    images: [
+      'assets/images/ardh1.jpg',
+      'assets/images/ardh2.jpg',
+    ],
+    isRenting: false,
+  ),
 ];

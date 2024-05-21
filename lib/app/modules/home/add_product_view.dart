@@ -120,7 +120,7 @@ class AddProductView extends GetView<AddProductController> {
                               SizedBox(
                                 width: 82.w,
                                 child: CustomText(
-                                  txt: 'طبيعة العقار',
+                                  txt: 'نوع العقار',
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Monadi',
@@ -143,6 +143,7 @@ class AddProductView extends GetView<AddProductController> {
                     SizedBox(
                       height: 20.h,
                     ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 20.w,

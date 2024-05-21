@@ -77,16 +77,16 @@ class AddProductController extends GetxController {
       if (data.isNotEmpty) {
         wilayaDropDown.value = data[0];
       }
-    });
-    loadCommuneArNames('1').then((data) {
-      arCommunes = data;
-      if (data.isNotEmpty) {
-        dropdownValue4.value = data[0];
-      }
-      //first item of dropdownValue1 'ايجار
-      dropdownValue1.value = 'ايجار';
-      //first item of dropdownValue2 'شقة'
-      dropdownValue2.value = 'مبنى';
+      loadCommuneArNames('9').then((data) {
+        arCommunes = data;
+        if (data.isNotEmpty) {
+          dropdownValue4.value = data[0];
+        }
+        //first item of dropdownValue1 'ايجار
+        dropdownValue1.value = 'ايجار';
+        //first item of dropdownValue2 'شقة'
+        dropdownValue2.value = 'مبنى';
+      });
     });
   }
 

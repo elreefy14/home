@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'app/data/local/shared_pref.dart';
+import 'app/modules/login/login_view.dart';
 import 'app/routes/app_routes.dart';
 import 'app/routes/routes.dart';
 import 'config/theme/my_theme.dart';
@@ -49,7 +50,8 @@ Future<void> main() async {
               ),
             );
           },
-          initialRoute: Routes.ZOOM_DRAWER,
+          home: LoginPage(),
+          // initialRoute: Routes.ZOOM_DRAWER,
           // first screen to show when app is running
           getPages: AppPages.routes,
           // app screens
