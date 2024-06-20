@@ -1,4 +1,4 @@
-    import 'package:get/get.dart';
+import 'package:get/get.dart';
 import '../modules/home/add_product_binding.dart';
 import '../modules/home/add_product_view.dart';
 import 'routes.dart';
@@ -11,10 +11,9 @@ import 'routes.dart';
 
 class AppPages {
   static final routes = [
-
     GetPage(
       name: Routes.ZOOM_DRAWER,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -22,12 +21,10 @@ class AppPages {
       page: () => const AddProductView(),
       binding: AddProductBinding(),
     ),
-
-
-
     GetPage(
       name: Routes.DETAILS,
       page: () => DetailsView(Get.arguments),
       binding: DetailsBinding(),
-    ),   ];
+    ),
+  ];
 }
